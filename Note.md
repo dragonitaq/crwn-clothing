@@ -13,3 +13,20 @@ react-router has the core functionality for routing in react and react-router-do
 ---
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+When we `import { Link } from 'react-router-dom'` and use `<Link>` in React, it will always be rendered as HTML anchor tag. Then we can style it like we normally do.
+
+---
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+Sometimes, in React component we will see `<div/>` is shorthand of `<div></div>`.
+We can use the shorthand if we don't have children. It is actually a feature of HTML5 but babel will make sure that it's compatible with HTML 4.
+
+---
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+ `import { ReactComponent as Logo }` is a special syntax from React.
+
+This new special syntax is used when importing SVG in React. The ReactComponent import name is special and tells Create React App that you want a React component that renders an SVG, rather than its filename.

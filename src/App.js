@@ -1,25 +1,25 @@
 import React from 'react';
-import HomePage from './pages/homepage.component';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import HomePage from './pages/homepage/homepage.component';
+import ShopPage from './pages/shop/shop.component';
+import Header from './components/header/header.component';
+import SignInAndOutPage from './pages/sign-in-and-out/sign-in-and-up.component';
 
 import './App.css';
-import './pages/homepage.styles.scss';
-
-const HatsPage = () => (
-  <div>
-    <h1>HATS PAGE</h1>
-  </div>
-);
+import './pages/homepage/homepage.styles.scss';
 
 function App() {
   return (
     <div>
+      {/* By placing here outside of the <Switch>, we render this component for every pages. */}
+      <Header />
       {/* We we use switch, when one route is executing, it ends immediately without routing other routes. */}
-      <switch>
+      <Switch>
         {/* exact default to true which means the URL must be exactly the stated. */}
         <Route exact path='/' component={HomePage} />
-        <Route exact path='/hats' component={HatsPage} />
-      </switch>
+        <Route exact path='/shop' component={ShopPage} />
+        <Route exact path='/signin' component={SignInAndOutPage} />
+      </Switch>
     </div>
   );
 }
