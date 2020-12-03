@@ -66,6 +66,7 @@ class App extends React.Component {
         <Switch>
           {/* exact default to true which means the URL must be exactly the stated. */}
           <Route exact path='/' component={HomePage} />
+          {/* Notice when we have params further down the URL, we cannot have exact keyword. */}
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
           {/* We don't want signed in user to visit /signin again to double login or mess with user authentication. So we redirect them to home route.
