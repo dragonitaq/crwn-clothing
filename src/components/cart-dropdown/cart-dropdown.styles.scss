@@ -1,0 +1,42 @@
+.cart-dropdown {
+  position: absolute;
+  width: 240px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid black;
+  background-color: white;
+  top: 90px;
+  right: 40px;
+  z-index: 5;
+
+  .empty-message {
+    font-size: 18px;
+    margin: 50px auto;
+  }
+
+  .cart-items {
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    /* This will create a scroll bar ONLY IF display items overflow our container. If we want to always show the scroll bar, the we can set overflow: scroll */
+    overflow: auto;
+  }
+
+  button {
+    /* This will push up the button as top as possible. */
+    margin-top: auto;
+  }
+
+  /* These 2 blocks of code make a customize scroll bar. I think I can reuse and customize to my own project! */
+  ::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+  }
+}

@@ -4,6 +4,7 @@
   flex-direction: column;
   height: 350px;
   align-items: center;
+  position: relative;
 
   .image {
     width: 100%;
@@ -11,6 +12,15 @@
     background-size: cover;
     background-position: center;
     margin-bottom: 5px;
+  }
+
+  /* Notice here we can select our custom-made HTML tag element. */
+  .custom-button {
+    position: absolute;
+    top: 255px;
+    width: 80%;
+    opacity: 0.7;
+    display: none;
   }
 
   .collection-footer {
@@ -27,6 +37,16 @@
 
     .price {
       width: 10%;
+    }
+  }
+
+  &:hover {
+    .image {
+      opacity: 0.8;
+    }
+    .custom-button {
+      display: flex;
+      opacity: 0.85;
     }
   }
 }
