@@ -8,6 +8,8 @@ import storage from 'redux-persist/lib/storage';
 
 import userReducer from './user/user-reducer';
 import cartReducer from './cart/cart.reducer';
+import directoryReducer from './directory/directory.reducer';
+import shopReducer from './shop/shop.reducer';
 
 const persistConfig = {
   // This tells which reducer we want to use. We want the root reducer.
@@ -22,6 +24,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   user: userReducer,
   cart: cartReducer,
+  directory: directoryReducer,
+  shop: shopReducer,
 });
 
 // Then we pass in our config & root reducer to have it persisted in local storage. This return a persisted version of our root reducer.
