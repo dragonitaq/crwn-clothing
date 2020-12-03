@@ -5,6 +5,8 @@ const selectorShop = (state) => state.shop;
 
 export const selectCollections = createSelector([selectorShop], (shop) => shop.collections);
 
-export const selectCollection = memoize((collectionUrlParam) =>
-  createSelector([selectCollections], (collections) => collections.find((collection) => collection.routeName === collectionUrlParam.toLowerCase()))
-);
+export const selectCollectionsPreview = createSelector([selectCollections], (collections) => Object.keys(collections).map((key) => collections[key]));
+/* Student proposed to use Object.values to achieve same result with fewer code. Like below: */
+// export const selectCollectionsPreview = createSelector([selectCollections], (collections) => Object.values(collections));
+
+export const selectCollection = memoize((collectionUrlParam) => createSelector([selectCollections], (collections) => collections[collectionUrlParam.toLowerCase()]));
