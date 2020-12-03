@@ -126,3 +126,11 @@ connect() actually passes dispatch into our components as a props even if we do 
 We can certainly use it in lieu of mapDispatchToProps as well as use it for multiple actions. The key idea is that if you don't need to create more elaborate functions or use structured selectors, passing dispatch directly into your component is perfectly viable.
 
 The idea is mostly around the context of the component you're building and the functions you are passing into it. Having mapDispatchToProps makes the component a bit more readable because you've separated the functions that are meant to be props being passed in as exactly that; props. If you instead pass dispatch in, it's an argument that you use inside of your component, and if you end up creating function definitions inside of your component which you then call somewhere in the component body, it makes it a bit harder to read. This might be necessary in some cases though where it relies on some internal component state, but the idea is that you have access to both methods with either mapDispatchToProps or just taking the dispatch property as a prop.
+
+---
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+Words from Yihua regarding file & folder name case sensitivity for git:
+
+It's possible that when you changed the names to lowercase, git didn't actually save your changes since by default it tends to ignore lower case folder name changes(which is super annoying), so even though on your local it was updated, GitHub was not aware! It happened to me before on another project so I definitely empathize :P the easiest way to force the change is to use the command line mv command and move the folder into a new one with the name you want rather than renaming it manually in your editor.
