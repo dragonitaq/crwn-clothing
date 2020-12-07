@@ -134,3 +134,11 @@ The idea is mostly around the context of the component you're building and the f
 Words from Yihua regarding file & folder name case sensitivity for git:
 
 It's possible that when you changed the names to lowercase, git didn't actually save your changes since by default it tends to ignore lower case folder name changes(which is super annoying), so even though on your local it was updated, GitHub was not aware! It happened to me before on another project so I definitely empathize :P the easiest way to force the change is to use the command line mv command and move the folder into a new one with the name you want rather than renaming it manually in your editor.
+
+---
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+## Link vs history.push
+
+history.push is more powerful than Link as Link is component and require user to click it while history. history.push on the other hand, may or may not require user interaction depend on your implementation and you can use it pretty much any where in the component (like componentDidMount where you can only use Link in render). In short if you need a link, then use Link, or else use history.push for more flexible and powerful purpose.
