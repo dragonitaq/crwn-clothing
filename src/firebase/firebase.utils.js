@@ -14,6 +14,8 @@ const config = {
   measurementId: 'G-2PNPXDCR7Q',
 };
 
+firebase.initializeApp(config);
+
 export const createUserProfileDoc = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
@@ -40,7 +42,20 @@ export const createUserProfileDoc = async (userAuth, additionalData) => {
   return userRef;
 };
 
-firebase.initializeApp(config);
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+
+  /* This basically adding all the userRef.set() into it and invoke in one shot. */
+  const batch = firestore.batch();
+  objectsToAdd.forEach((obj) => {
+    // This let firebase to auto create random id & return collection reference object.
+    const newDocRef = collectionRef.doc();
+    // This is how to batch set() documents.
+    batch.set(newDocRef, obj);
+    // Then final to invoke the batch.
+  });
+  return await batch.commit();
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
