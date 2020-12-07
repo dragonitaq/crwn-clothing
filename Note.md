@@ -142,3 +142,19 @@ It's possible that when you changed the names to lowercase, git didn't actually 
 ## Link vs history.push
 
 history.push is more powerful than Link as Link is component and require user to click it while history. history.push on the other hand, may or may not require user interaction depend on your implementation and you can use it pretty much any where in the component (like componentDidMount where you can only use Link in render). In short if you need a link, then use Link, or else use history.push for more flexible and powerful purpose.
+
+---
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+## API call vs subscription
+
+The only caveat here is that the only time we'll ever get new data from our back end is when we remount our shop. This is because we're no longer leveraging the live updates stream style that the observable pattern lended us when we were using onsSnapshot as before. Now we're literally doing one off API calls inside of our component at Mount leveraging the promised chain style of doing asynchronous event handling now.
+
+---
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+If redux-thunk middleware is enabled, anytime you attempt to dispatch a function instead of an object, this middleware will call that function which dispatch method itself as the first argument.
+
+TRedux-thunk is just a function that returns a function that gets access to dispatch so that we can dispatch multiple actions and handle asynchronous code inside of it.
