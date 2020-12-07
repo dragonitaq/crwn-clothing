@@ -42,6 +42,7 @@ export const createUserProfileDoc = async (userAuth, additionalData) => {
   return userRef;
 };
 
+/* This function is only for importing data into Firebase one time only. */
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
 
@@ -55,6 +56,29 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
     // Then final to invoke the batch.
   });
   return await batch.commit();
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  /* This create a new array from our collections with specified fields that we want. */
+  const transformedCollections = collections.docs.map((doc) => {
+    /* .data() returns a JSON object of the document. */
+    const { title, items } = doc.data();
+
+    return {
+      /* encodeURI is JS native fn that convert plain text into URL encoded string. */
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+
+  return transformedCollections.reduce((accumulator, collection) => {
+    /* We match each collection title to its collection details generated from convertCollectionsSnapshotToMap(). */
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+    // We pass in empty object as the initial value.
+  }, {});
 };
 
 export const auth = firebase.auth();
